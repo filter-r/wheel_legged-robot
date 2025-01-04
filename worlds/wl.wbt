@@ -1,0 +1,460 @@
+#VRML_SIM R2022b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/floors/protos/RectangleArena.proto"
+
+WorldInfo {
+  basicTimeStep 2
+  FPS 40
+  contactProperties [
+    ContactProperties {
+      softCFM 0.0001
+    }
+  ]
+}
+Viewpoint {
+  orientation 0.18618174043893124 -0.0008862357017950941 -0.982514923099599 3.1509310520034672
+  position 1.0853822294532758 0.001704820041961781 0.4418425115767143
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  rotation 0 1 0 0
+  floorSize 20 20
+}
+Robot {
+  translation 0 0 0.078
+  rotation -1 -3.69431e-07 5.94698e-07 -1.54854
+  scale 0.4 0.4 0.4
+  children [
+    Gyro {
+      translation 0.15 0 0
+      rotation -1 0 0 1.5708
+    }
+    InertialUnit {
+      translation 0.15 0 0
+      rotation 1 1.19872e-08 1.88116e-06 -1.5707953071795862
+      name "imu"
+    }
+    DEF LR HingeJoint {
+      jointParameters HingeJointParameters {
+        position 0.5508563518593286
+        anchor 0.3412 5.72536e-07 -0.06
+      }
+      device [
+        RotationalMotor {
+          name "motor_LR"
+          maxTorque 200
+        }
+        PositionSensor {
+          name "ps_LR"
+        }
+      ]
+      endPoint Solid {
+        translation 0.35599999997463355 -3.138621165062431e-05 -0.05998649664451856
+        rotation -0.7033909979231194 -0.10237454613568031 0.7033921781938095 2.93756273852623
+        scale 2 2 2
+        children [
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              position 3.218772779098179
+              axis 0 0 1
+              anchor 0.06 0 0
+            }
+            endPoint Solid {
+              translation 0.05999999999988819 -6.194294773417623e-11 -0.000999999999999977
+              rotation -0.6513564115497565 -0.38919502448064625 0.6513540189885477 3.883904531919682
+              scale 0.6 0.6 0.6
+              children [
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    position 895.3629842701636
+                    anchor 0.009 -0.2 0
+                  }
+                  device [
+                    PositionSensor {
+                      name "ps_LW"
+                    }
+                    RotationalMotor {
+                      name "motor_LW"
+                      maxVelocity 200
+                      maxTorque 15
+                    }
+                  ]
+                  endPoint Solid {
+                    translation -0.022299999999977393 -0.2 0
+                    rotation 0.9999999999999999 0 0 3.1506706506622857
+                    scale 0.95 0.95 0.95
+                    children [
+                      DEF wheel_L Shape {
+                        appearance PBRAppearance {
+                          baseColor 1 1 0.498039
+                          roughness 0.8
+                          metalness 0.5
+                        }
+                        geometry Mesh {
+                          url [
+                            "../STL/车轮.STL"
+                          ]
+                        }
+                      }
+                    ]
+                    name "wheel_L"
+                    contactMaterial "wheel"
+                    boundingObject Mesh {
+                      url [
+                        "../STL/车轮.STL"
+                      ]
+                    }
+                    physics Physics {
+                      density -1
+                      mass 0.2
+                    }
+                  }
+                }
+                DEF leg2 Shape {
+                  appearance PBRAppearance {
+                    roughness 0.8
+                    metalness 0.6
+                  }
+                  geometry Mesh {
+                    url [
+                      "../STL/小腿.STL"
+                    ]
+                  }
+                }
+              ]
+              contactMaterial "wheel"
+              boundingObject USE leg2
+              physics Physics {
+                density -1
+                mass 0.15
+              }
+            }
+          }
+          DEF leg_LR Shape {
+            appearance PBRAppearance {
+              baseColor 0.996078 0.996078 0.498039
+              roughness 0.8
+              metalness 0.5
+            }
+            geometry Mesh {
+              url [
+                "../STL/腿1.STL"
+              ]
+            }
+          }
+        ]
+        name "solid(3)"
+        boundingObject USE leg_LR
+        physics Physics {
+          density -1
+          mass 0.2
+        }
+      }
+    }
+    DEF RR HingeJoint {
+      jointParameters HingeJointParameters {
+        position 0.5517338414933127
+        anchor 0.3412 5.72536e-07 -0.06
+      }
+      device [
+        RotationalMotor {
+          name "motor_RR"
+          maxTorque 200
+        }
+        PositionSensor {
+          name "ps_RR"
+        }
+      ]
+      endPoint Solid {
+        translation -0.054800000507935875 -1.1378667529889663e-05 -0.060020684142821676
+        rotation 0.14296791398443834 0.9793454930947212 0.14297755322425793 1.5916682903656074
+        scale 2 2 2
+        children [
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              position 4.204
+              axis 0 0 1
+              anchor 0.06 0 0
+            }
+            endPoint Solid {
+              translation 0.05999999999990637 -1.2855295298758415e-10 -0.0016999999999993208
+              rotation -0.4569972152244352 -0.763091491775545 0.45699553658310965 4.445243410232653
+              scale 0.6 0.6 0.6
+              children [
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    position 895.3299110106607
+                    axis -1 0 0
+                    anchor 0.009 -0.2 0
+                  }
+                  device [
+                    PositionSensor {
+                      name "ps_RW"
+                    }
+                    RotationalMotor {
+                      name "motor_RW"
+                      maxVelocity 200
+                      maxTorque 15
+                    }
+                  ]
+                  endPoint Solid {
+                    translation -0.02170000000001441 -0.2 0
+                    rotation -0.9999999999999999 0 0 3.117597391159401
+                    scale 0.95 0.95 0.95
+                    children [
+                      DEF wheel_R Shape {
+                        appearance PBRAppearance {
+                          baseColor 1 1 0.498039
+                          roughness 0.8
+                          metalness 0.5
+                        }
+                        geometry Mesh {
+                          url [
+                            "../STL/车轮.STL"
+                          ]
+                        }
+                      }
+                    ]
+                    name "wheel_R"
+                    contactMaterial "wheel"
+                    boundingObject Mesh {
+                      url [
+                        "../STL/车轮.STL"
+                      ]
+                    }
+                    physics Physics {
+                      density -1
+                      mass 0.2
+                    }
+                  }
+                }
+                DEF leg2 Shape {
+                  appearance PBRAppearance {
+                    roughness 0.8
+                    metalness 0.6
+                  }
+                  geometry Mesh {
+                    url [
+                      "../STL/小腿.STL"
+                    ]
+                  }
+                }
+              ]
+              contactMaterial "wheel"
+              boundingObject USE leg2
+              physics Physics {
+                density -1
+                mass 0.15
+              }
+            }
+          }
+          DEF leg_LR Shape {
+            appearance PBRAppearance {
+              baseColor 0.996078 0.996078 0.498039
+              roughness 0.8
+              metalness 0.5
+            }
+            geometry Mesh {
+              url [
+                "../STL/腿1.STL"
+              ]
+            }
+          }
+        ]
+        name "solid(4)"
+        boundingObject USE leg_LR
+        physics Physics {
+          density -1
+          mass 0.2
+        }
+      }
+    }
+    DEF LF HingeJoint {
+      jointParameters HingeJointParameters {
+        position -0.32109306772203744
+        anchor 0.314 -0.00411742 0.0565929
+      }
+      device [
+        PositionSensor {
+          name "ps_LF"
+        }
+        RotationalMotor {
+          name "motor_LF"
+          maxTorque 200
+        }
+      ]
+      endPoint Solid {
+        translation 0.3140000003294745 -0.0041425788356202605 0.05655213414649668
+        rotation -0.12985326645765186 -0.9829932359170748 0.12985540932728235 1.587947484150509
+        scale 2 2 2
+        children [
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              position -2.0923152589223415
+              axis 0 0 1
+              anchor 0.06 0 0
+            }
+            endPoint Solid {
+              translation 0.05999999999938518 3.1150799996782083e-08 -0.0013000000000000067
+              rotation 0.4609392723296695 0.7583347119166466 -0.4609375792083906 1.8439681524473455
+              scale 0.6 0.6 0.6
+              children [
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    position 895.396245556657
+                    anchor 0.009 -0.2 0
+                  }
+                  endPoint SolidReference {
+                    solidName "wheel_L"
+                  }
+                }
+                DEF leg1 Shape {
+                  appearance PBRAppearance {
+                    roughness 0.8
+                    metalness 0.6
+                  }
+                  geometry Mesh {
+                    url [
+                      "../STL/小腿.STL"
+                    ]
+                  }
+                }
+              ]
+              contactMaterial "wheel"
+              boundingObject USE leg1
+              physics Physics {
+                density -1
+                mass 0.15
+              }
+            }
+          }
+          DEF leg_LF Shape {
+            appearance PBRAppearance {
+              baseColor 1 1 0.498039
+              roughness 0.8
+              metalness 0.5
+            }
+            geometry Mesh {
+              url [
+                "../STL/腿1.STL"
+              ]
+            }
+          }
+        ]
+        name "solid(2)"
+        boundingObject USE leg_LF
+        physics Physics {
+          density -1
+          mass 0.2
+        }
+      }
+    }
+    DEF RF HingeJoint {
+      jointParameters HingeJointParameters {
+        position -0.3224047024755278
+        anchor 0.314 -0.00411742 0.0565929
+      }
+      device [
+        PositionSensor {
+          name "ps_RF"
+        }
+        RotationalMotor {
+          name "motor_RF"
+          maxTorque 200
+        }
+      ]
+      endPoint Solid {
+        translation -0.014999998867580633 -0.004123366520832728 0.05663428889492255
+        rotation 0.7040131694871429 0.09347230695880882 0.7040087961243562 2.9551945413200293
+        scale 2 2 2
+        children [
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              position -3.0474
+              axis 0 0 1
+              anchor 0.06 0 0
+            }
+            endPoint Solid {
+              translation 0.06 1.6018700007315016e-08 -0.0014000000000000004
+              rotation 0.6494305668177044 0.39557929189563196 -0.6494281813304577 2.388215922128127
+              scale 0.6 0.6 0.6
+              children [
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    position -885.3435591675308
+                    anchor 0.009 -0.2 0
+                  }
+                  endPoint SolidReference {
+                    solidName "wheel_R"
+                  }
+                }
+                DEF leg1 Shape {
+                  appearance PBRAppearance {
+                    roughness 0.8
+                    metalness 0.6
+                  }
+                  geometry Mesh {
+                    url [
+                      "../STL/小腿.STL"
+                    ]
+                  }
+                }
+              ]
+              contactMaterial "wheel"
+              boundingObject USE leg1
+              physics Physics {
+                density -1
+                mass 0.15
+              }
+            }
+          }
+          DEF leg_RF Shape {
+            appearance PBRAppearance {
+              baseColor 1 1 0.498039
+              roughness 0.8
+              metalness 0.5
+            }
+            geometry Mesh {
+              url [
+                "../STL/腿1.STL"
+              ]
+            }
+          }
+        ]
+        name "solid(1)"
+        boundingObject USE leg_RF
+        physics Physics {
+          density -1
+          mass 0.2
+        }
+      }
+    }
+    DEF body Shape {
+      appearance PBRAppearance {
+        baseColor 0.333333 0.666667 0.498039
+        roughness 0.8
+        metalness 0.4
+      }
+      geometry Mesh {
+        url [
+          "../STL/机身.STL"
+        ]
+      }
+    }
+  ]
+  boundingObject Mesh {
+    url [
+      "../STL/机身.STL"
+    ]
+  }
+  physics Physics {
+    density -1
+    mass 2
+  }
+  controller "my_controller"
+}
